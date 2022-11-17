@@ -1,0 +1,33 @@
+{% extends "layouts/default.html" %}
+{% block title %}ESSEC's Python 101 Exam 2020 Challenge 1{% endblock %}
+{% block content %}
+<div id="main">
+    <h1>Python for Business Exam 2022, Challenge 1</h1>
+    <p>Your current grade is <strong>{{ grade }}</strong></p>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    <p>Take n={{ challenge }}</p>
+    <p>Repeatedly apply the following transformation until you arrive at n==1</p>
+    <ul>
+        <li>If n is even, divide by 2</li>
+        <li>If n is odd, multiply n by 3 and then add 1</li>
+    </ul>
+    <p>What is the maximum number you've reached in the process ?</p>
+    <form action="/collatz" method="post">
+        <input type="text" name="answer" placeholder="The answer, e.g. 42" />
+        <input name="token" type="hidden" value="{{ token }}">
+        <input type="submit" value="Submit" />
+    </form>
+    <p>For example, starting at n==5, the sequence is 5, 16, 8, 4, 2, 1, and the answer is therefore 16.</p>
+    <p><strong>Hints and tips:</strong></p>
+    <ul>
+        <li>Make sure that you are always working with integers. Python may silently transform your numbers into float, which lack the required precision for a correct answer.</li>
+        <li>Look at Python's <code>//</code> operator, you may need it.</li>
+        <li>You may need a <code>while</code> loop, if you don't know what that is, a <code>for</code> loop over a very wide range may be a good substitute.</li>
+        <!--<li>You only have one shot, make sure you get the example correct (input 5 => output 16), and then try some big numbers and check by hand.</li>-->
+    </ul>
+    <p>P.S. If you ever find a number for which you don't end up at 1, please alert the nearest mathematician, you have just solved an open problem in mathematics.</p>
+</div>
+
+{% endblock %}
