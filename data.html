@@ -1,0 +1,23 @@
+{% extends "layouts/default.html" %}
+{% block title %}ESSEC's Python 101 Exam 2020 Challenge 2{% endblock %}
+{% block content %}
+<div id="main">
+    <h1>Python for Business Exam 2022, Challenge 2</h1>
+    <p>Your current grade is <strong>{{ grade }}</strong></p>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    <!-- <p><strong>HINT</strong> You can solve this problem using <a href="https://seaborn.pydata.org/api.html">Seaborn</a> and in particular the 'hue' argument to its function in order to see if and how the dynamics differs depending on the value of a categorical column</p> -->
+    <p>You are given the following data in CSV format. These are statistics about a fleet of ice cream trucks.</p>
+    <p>The last line reflects the characteristics of a proposed new route for one of the trucks.</p>
+    <p>Your task is to predict the net income of the proposed new route with 10% accuracy</p>
+    <p>According to the given data, the net income for the proposed new route will be:</p>
+    <form action="/data" method="post">
+        <input type="text" name="answer" placeholder="The answer, e.g. 42" />
+        <input name="token" type="hidden" value="{{ token }}">
+        <input type="submit" value="Submit" />
+    </form>
+    <pre>{{ challenge }}</pre>
+</div>
+
+{% endblock %}
